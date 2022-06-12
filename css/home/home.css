@@ -1,0 +1,62 @@
+.delorian-text {
+    float: left;
+    position: absolute;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.delorian img {
+    width: 100%;
+    height: auto;
+    
+}
+
+.delorian button {
+    display: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    text-align: center;
+}
+
+.grid-left-img-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.imagen {
+    text-align: center;
+}
+
+.image-box{
+    background-color: #4c96d7;
+    height: 85px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.grid-left-column {
+    margin-left: 10px;
+}
+
+.list {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.delorian-text {
+    color: #4c96d7
+}
+
+.delorian-text button {
+    background-color: #4c96d7;
+    color: #ffffff;
+    color: black;
+    padding: 5px;
+    cursor: pointer;
+}

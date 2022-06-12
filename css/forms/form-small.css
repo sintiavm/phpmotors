@@ -1,0 +1,11 @@
+@media screen and (max-width: 600px) {
+    .auth-forms {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .auth-forms-register {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+}

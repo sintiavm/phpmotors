@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+
+.page-wrapper {
+    background-image: url(../images/site/small_check.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.page-container {
+    width: 80%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 3px solid #4c96d7;
+    margin-top: 10px;
+}
+
+/* admin file styles */
+.admin-wrapper {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    height: auto;
+    justify-items: center;
+}
+
+.management {
+    text-decoration: none;
+    color: #2a5a85;
+    font-size: 1.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transition: 0.3s;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.management:hover {
+    color: #063761;
+}

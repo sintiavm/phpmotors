@@ -1,0 +1,36 @@
+@media screen and (max-width: 600px) {
+    .delorian-text {
+        font-size: 0.5rem;
+    }
+
+    .delorian-text button {
+        display: none;
+    }
+
+    .delorian button {
+        display: block;
+        background-color: #4c96d7;
+        color: #ffffff;
+        color: black;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+
+    .grid-left-column {
+        margin-left: 0;
+    }
+
+    .image-box {
+        width: 100%;
+        margin-right: 5px;
+        /* margin-left: 5px; */
+    }
+}

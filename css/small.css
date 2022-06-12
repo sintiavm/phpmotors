@@ -1,0 +1,14 @@
+@media screen and (max-width: 600px) {
+    .page-wrapper {
+        background-image: url(#);
+    }
+
+    .page-container {
+        width: 100%;
+    }
+
+    .admin-wrapper {
+        grid-template-columns: 1fr ;
+    }
+
+}
