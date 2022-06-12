@@ -10,7 +10,7 @@
 
     // Create or access a Session
     session_start();
-    $_SESSION['loggedin'] = FALSE;
+    //$_SESSION['loggedin'] = FALSE;
 
 
 
