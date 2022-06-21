@@ -10,8 +10,12 @@
 
     // Create or access a Session
     session_start();
-    //$_SESSION['loggedin'] = FALSE;
+    if (empty($_SESSION['loggedin'])) {
+        $_SESSION['loggedin'] = FALSE;
+    }
 
+    //variables used for the view
+    $linkToUpdateUserInfo = '<a class="management" href="/phpmotors/accounts?action=client-update">Update User Info</a>';
 
 
     $classifications = getClassifications();
@@ -133,10 +137,78 @@
             // Send them to the root controler
             header ('location: /phpmotors/');
             exit;
-    
+
+        case 'client-update':
+            include '../view/client-update.php';
+        break;
+
+        case 'updateClientInfo':
+            // Filter and store the data
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+
+            // Checking for existing email
+            $existingEmail = EmailChecking($clientEmail);
+            if ($existingEmail) {
+                $_SESSION['message'] = "<p class='notice'>That email address already exists. Please try again.</p>";
+                // $message = "<p class='notice'>The email address $clientEmail is already in use. Do you want to log in instead?</p>";
+                include '../view/client-update.php';
+                exit;
+            }
+
+            // Check for missing data
+            if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+                $message = '<p class="error">Please provide information for all empty form fields.</p>';
+                include '../view/client-update.php';
+                exit;
+            }
+            $updateCliResult = updateClient($clientId, $clientFirstname, $clientLastname, $clientEmail);
+            if ($updateCliResult) {
+
+                $_SESSION['message'] = "<p class='notice'>Congratulations, $clientFirstname $clientLastname, your account information has been successfully updated.</p>";
+                //update the $_SESSION['clientData']
+                $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
+                $_SESSION['clientData']['clientLastname'] = $clientLastname;
+                $_SESSION['clientData']['clientEmail'] = $clientEmail;
+
+                header('location: /phpmotors/accounts/?action=client-update');
+                exit;
+            } else {
+                $_SESSION['message'] = "<p class='notice'>Error: $clientFirstname $clientLastname, your account information has not been updated.</p>";
+                include '../view/client-update.php';
+                exit;
+            }
+
+        case 'updatePassword':
+            // Filter and store the data
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+            $validPassword = checkPassword($clientPassword);
+            // check for missing data
+            if (empty($validPassword)) {
+                $message = '<p class="error">Please provide information for all empty form fields.</p>';
+                include '../view/client-update.php';
+                exit;
+            }
+            // Hash the checked password
+            $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+            $updatePassResult = updateClientPassword($clientId, $hashedPassword);
+            if ($updatePassResult) {
+                $_SESSION['message'] = "<p class='notice'>Congratulations,  your password has been successfully updated.</p>";
+                header('location: /phpmotors/accounts/?action=client-update');
+                exit;
+            } else {
+                $_SESSION['message'] = "<p class='notice'>Error: , your password has not been updated.</p>";
+                include '../view/client-update.php';
+                exit;
+            }
+            
         default:
             include '../view/admin.php';
             break;
     }
 
 ?>
+

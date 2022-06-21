@@ -50,3 +50,40 @@ textarea {
 .register-link a:hover{
     color: rgb(11, 37, 93);
 }
+
+.accounts-update-styles-wrapper {
+    margin: 0 auto;
+    display: flex;
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accounts-update-styles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.password-requirements-update {
+    font-size: 0.8em;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.btn-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-btn {
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+
+.accounts-update-styles {
+    display: grid;
+    
+}

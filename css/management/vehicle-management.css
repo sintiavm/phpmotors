@@ -5,3 +5,13 @@ main {
 .links-to-add {
     margin-bottom: 45px;
 }
+
+#inventoryDisplay {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 45px;
+}

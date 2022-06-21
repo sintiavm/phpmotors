@@ -48,3 +48,8 @@ body {
 .management:hover {
     color: #063761;
 }
+
+.update-user-inf-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}

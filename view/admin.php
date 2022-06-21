@@ -50,12 +50,26 @@
                 } ?>
             </h5>
         </main>
-        <?php 
-            $vehicle_management_link = '<a class="management" href="/phpmotors/vehicles/">Vehicle Management</a>';
-            if ($_SESSION['clientData']['clientLevel'] ==3){
-                echo $vehicle_management_link; 
-            }
-        ?>
+
+        <div class="update-user-inf-wrapper">
+            <h4>Account Management</h4>
+            <p>Use this link to update your account information.</p>
+            <?php 
+                echo $linkToUpdateUserInfo ;
+            ?>
+        </div> 
+
+
+        <div class="update-user-inf-wrapper">
+            <h4>Use this link to manage new cars</h4>
+
+            <?php 
+                $vehicle_management_link = '<a class="management" href="/phpmotors/vehicles/">Vehicle Management</a>';
+                if ($_SESSION['clientData']['clientLevel'] ==3){
+                    echo $vehicle_management_link; 
+                }
+            ?>
+        </div>
 
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . './phpmotors/templates/footer.php'; ?>
     </div>

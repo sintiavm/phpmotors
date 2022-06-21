@@ -5,7 +5,9 @@
 
     // Create or access a Session
     session_start();
-    $_SESSION['loggedin'] = FALSE;
+    if (empty($_SESSION['loggedin'])) {
+        $_SESSION['loggedin'] = FALSE;
+    }
 
 
     $classifications = getClassifications();
