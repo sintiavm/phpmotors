@@ -4,7 +4,7 @@
 <header>
     <div class="head-container">
         <div class="logo">
-            <a href="#">
+            <a href="/phpmotors/">
                 <img src="../images/site/logo.png" alt="logo">
             </a>
         </div>

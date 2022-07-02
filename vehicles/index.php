@@ -192,6 +192,29 @@
             }
             break;
 
+        case 'classification':
+
+            $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $vehicles = getVehiclesByClassification($classificationName);
+            if (!count($vehicles)) {
+                $message = "<p>Sorry, no vehicles were found for $classificationName.</p>";
+            } else {
+                $vehiclesDisplay = buildVehicleDisplay($vehicles);
+            }
+            include '../view/classification.php';
+        break;
+
+        case 'details':
+            $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+            $invInfo = getInvItemInfo($invId);
+            if (count($invInfo) < 1) {
+                $message = 'Sorry, no product information could be found.';
+            } else {
+                $invDisplay = buildVehicleDetails($invInfo);
+            }
+            include '../view/vehicle-details.php';
+            exit;
+
         default:
             $classificationList = buildClassificationList($classifications);
 

@@ -1,0 +1,6 @@
+@media screen and (max-width: 600px) {
+    #inv-display {
+        grid-template-columns: 1fr ;
+        gap: 25px;
+    }
+}

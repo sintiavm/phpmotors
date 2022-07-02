@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+.inv-details {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.inv-details img {
+    width: 85%;
+}

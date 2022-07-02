@@ -106,8 +106,8 @@
                     id="image" 
                     name="invImage" 
                     placeholder="Image path" 
-                    value="/phpmotors/images/no-image.png" 
-                    readonly
+                    <?php if(isset($invImage)){ echo "value='$invImage'"; } elseif(isset($invInfo['invImage'])) {echo "value='$invInfo[invImage]'"; }?>
+                    required
                 >
 
                 <label for="thumbnail">Thumbnail:</label>
@@ -116,8 +116,8 @@
                     id="thumbnail" 
                     name="invThumbnail" 
                     placeholder="Thumbnail path" 
-                    value="/phpmotors/images/no-image.png" 
-                    readonly
+                    <?php if(isset($invThumbnail)){ echo "value='$invThumbnail'"; } elseif(isset($invInfo['invThumbnail'])) {echo "value='$invInfo[invThumbnail]'"; }?>
+                    required
                 >
 
                 <label for="price">Price:</label>

@@ -20,13 +20,24 @@
     //from the database
     function navList($classifications) {
         $navList = '<ul class="nav-container">';
-        $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors hpme page'>Home</a></li>";
+        $navList .= "<li><a href='/phpmotors/' title='View the PHP Motors hpme page'>Home</a></li>";
         foreach ($classifications as $classification) {
-            $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+            $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName="
+            .urlencode($classification['classificationName']).
+            "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
         }
         $navList .= '</ul>';
         return $navList;
     }
+    // function navList($classifications) {
+    //     $navList = '<ul class="nav-container">';
+    //     $navList .= "<li><a href='/phpmotors/' title='View the PHP Motors hpme page'>Home</a></li>";
+    //     foreach ($classifications as $classification) {
+    //         $navList .= "<li><a href='/phpmotors/vehicles/?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
+    //     }
+    //     $navList .= '</ul>';
+    //     return $navList;
+    // }
 
 
     // Build the classifications select list 
@@ -39,4 +50,36 @@
         $classificationList .= '</select>'; 
         return $classificationList; 
    }
+
+   //build a display of vehicles whitin an unordered list
+   function buildVehicleDisplay($vehicles){
+    $dv = '<ul id="inv-display">';
+    foreach ($vehicles as $vehicle) {
+        $dv .= "<a href='/phpmotors/vehicles?action=details&invId=$vehicle[invId]'>";
+        $dv .= '<li class="vehicles-card">';
+        $dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+        $dv .= '<hr>';
+        $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
+        $dv .= "<span>$vehicle[invPrice]</span>";
+        $dv .= "<span>this is the id$vehicle[invId]</span>";
+        $dv .= '</li>';
+        $dv .= '</a>';
+    }
+    $dv .= '</ul>';
+    return $dv;
+   }
+
+   //create a funciton that render items from a vehicle id to a details page
+    function buildVehicleDetails($invInfo){
+        $dv = '<div class="inv-details">';
+        $dv .= "<img src='$invInfo[invImage]' alt='Image of $invInfo[invMake] $invInfo[invModel] on phpmotors.com'>";
+        $dv .= '<hr>';
+        $dv .= "<h2>$invInfo[invMake] $invInfo[invModel]</h2>";
+        $dv .= "<p><b>Description</b>: $invInfo[invDescription]</p>";
+        $dv .= "<p><b>Stock</b>: $invInfo[invStock]</p>";
+        $dv .= "<p><b>Price</b>: $invInfo[invPrice]</p>";
+        $dv .= '</div>';
+        return $dv;
+    }
 ?>
+

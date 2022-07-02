@@ -41,7 +41,7 @@
                     <button>Own Today</button>
                 </div>
                 <div class="delorian">
-                    <img src="./images/delorean.jpg" alt="delorian">
+                    <img src="./images/vehicles/delorean.jpg" alt="delorian">
                     <button>Own Today</button>
                 </div>
             </div>

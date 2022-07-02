@@ -88,13 +88,15 @@
             }
         case 'log-in':
             // Filter and store the data
+
+
             $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
             $validEmail = checkEmail($clientEmail);
             $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
             $validPassword = checkPassword($clientPassword);
             // check for missing data
             if (empty($validEmail) || empty($validPassword)) {
-                $message = '<p class="error">Please provide information for all empty form fields.</p>';
+                $message = '<p class="error"> Please provide information for all empty form fields.</p>';
                 include '../view/login.php';
                 exit;
             }
@@ -211,4 +213,6 @@
     }
 
 ?>
+
+
 
