@@ -72,7 +72,7 @@
    //create a funciton that render items from a vehicle id to a details page
     function buildVehicleDetails($invInfo){
         $dv = '<div class="inv-details">';
-        $dv .= "<img src='$invInfo[invImage]' alt='Image of $invInfo[invMake] $invInfo[invModel] on phpmotors.com'>";
+        $dv .= "<img src='/phpmotors$invInfo[invImage]' alt='Image of $invInfo[invMake] $invInfo[invModel] on phpmotors.com'>";
         $dv .= '<hr>';
         $dv .= "<h2>$invInfo[invMake] $invInfo[invModel]</h2>";
         $dv .= "<p><b>Description</b>: $invInfo[invDescription]</p>";
