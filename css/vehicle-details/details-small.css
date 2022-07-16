@@ -1,0 +1,11 @@
+@media screen and (max-width: 600px) {
+    .thumbnails {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .thumbnails img {
+        width: 180px;
+    }
+}

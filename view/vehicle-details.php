@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="../css/vehicles-detail/details-l.css">
     <link rel="stylesheet" href="../css/vehicles-detail/details-s.css">
 
+    <link rel="stylesheet" href="../css/vehicle-details/details.css">
+    <link rel="stylesheet" href="../css/vehicle-details/details-small.css">
+
 
     <title>Details for <?php echo $invInfo['invModel']; ?></title>
 </head>

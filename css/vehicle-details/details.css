@@ -1,0 +1,12 @@
+.thumbnails {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.thumbnails img {
+    width: 200px;
+}

@@ -1,8 +1,9 @@
-<?php 
+<?php
     require_once '../library/connections.php';
     require_once '../model/main-model.php';
     require_once '../model/vehicles-model.php';
     require_once '../model/accounts-model.php';
+    require_once '../model/uploads-model.php';
     require_once '../library/functions.php';
 
     // Create or access a Session
@@ -28,7 +29,7 @@
     if ($action == NULL){
     $action = filter_input(INPUT_POST, 'action');
     }
-    
+
     switch ($action){
         case 'add-class':
             include '../view/add-classification.php';
@@ -97,17 +98,17 @@
             }
             break;
 
-                /* * ********************************** 
-        * Get vehicles by classificationId 
-        * Used for starting Update & Delete process 
-        * ********************************** */ 
-        case 'getInventoryItems': 
-            // Get the classificationId 
-            $classificationId = filter_input(INPUT_GET, 'classificationId', FILTER_SANITIZE_NUMBER_INT); 
-            // Fetch the vehicles by classificationId from the DB 
-            $inventoryArray = getInventoryByClassification($classificationId); 
-            // Convert the array to a JSON object and send it back 
-            echo json_encode($inventoryArray); 
+                /* * **********************************
+        * Get vehicles by classificationId
+        * Used for starting Update & Delete process
+        * ********************************** */
+        case 'getInventoryItems':
+            // Get the classificationId
+            $classificationId = filter_input(INPUT_GET, 'classificationId', FILTER_SANITIZE_NUMBER_INT);
+            // Fetch the vehicles by classificationId from the DB
+            $inventoryArray = getInventoryByClassification($classificationId);
+            // Convert the array to a JSON object and send it back
+            echo json_encode($inventoryArray);
         break;
 
         case 'mod':
@@ -153,7 +154,7 @@
                     header('location: /phpmotors/vehicles/');
                     exit;
                 }
-                
+
                 exit;
             } else {
                 $message = "<p>Error. The new vehicle was not updated.</p>";
@@ -176,7 +177,7 @@
             $invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
-            
+
             // $deleteResult = deleteVehicle($invId);
             if ($deleteResult) {
                 $message = "<p class='notice'>Congratulations the, $invMake $invModel was	successfully deleted.</p>";
@@ -199,6 +200,10 @@
             if (!count($vehicles)) {
                 $message = "<p>Sorry, no vehicles were found for $classificationName.</p>";
             } else {
+                // echo the array
+                // echo json_encode($vehicles);
+                // exit;
+
                 $vehiclesDisplay = buildVehicleDisplay($vehicles);
             }
             include '../view/classification.php';
@@ -207,16 +212,23 @@
         case 'details':
             $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
             $invInfo = getInvItemInfo($invId);
+            $thumbnail = getThumbnailInf($invId);
+            // $thumbnail = getThumbnailInf($invId)
+
             if (count($invInfo) < 1) {
                 $message = 'Sorry, no product information could be found.';
             } else {
-                $invDisplay = buildVehicleDetails($invInfo);
+                // echo json_encode($invInfo["imgName"]);
+                // exit;
+                $invDisplay = buildVehicleDetails($invInfo, $thumbnail );
+
             }
             include '../view/vehicle-details.php';
             exit;
 
         default:
             $classificationList = buildClassificationList($classifications);
+
 
 
             include '../view/vehicle-management.php';

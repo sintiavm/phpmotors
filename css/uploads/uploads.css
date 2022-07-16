@@ -1,0 +1,9 @@
+#image-display {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-uploads img {
+    width: 60%;
+}
