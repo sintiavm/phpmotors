@@ -101,7 +101,7 @@ switch ($action){
 
     // Build the image information into HTML for display
     if (count($imageArray)) {
-        $imageDisplay = buildImageDisplay($imageArray);
+       $imageDisplay = buildImageDisplay($imageArray);
     } else {
         $imageDisplay = '<p class="notice">No images to display</p>';
     }
