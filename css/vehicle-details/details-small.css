@@ -8,4 +8,17 @@
     .thumbnails img {
         width: 180px;
     }
+
+    .inv-details img {
+        width: 300px;
+    }
+
+    /* form styles */
+    .notice {
+        font-size: 0.9rem;
+    }
+
+    .review-wrapper {
+        width: 95%;
+    }
 }

@@ -42,3 +42,14 @@ function buildInventoryList(data) {
     // Display the contents in the Vehicle Management view 
     inventoryDisplay.innerHTML = dataTable; 
    }
+
+   function drawPattern() {
+    var canvas = document.getElementById("demo2");
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "red";
+    
+    var img = new Image();
+    img.src = "../images/bg-bike.png";
+    img.onload = function() { 
+    };            
+}

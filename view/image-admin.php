@@ -37,7 +37,7 @@ $message = $_SESSION['message'];
             } ?>
 
             <form action="/phpmotors/uploads/" method="post" enctype="multipart/form-data">
-                <label for="invItem">Vehicle</label>
+                <label>Vehicle</label>
                 <?php  echo $prodSelect; ?>
                 <fieldset>
                     <label>Is this the main image for the vehicle?</label>

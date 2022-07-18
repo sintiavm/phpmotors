@@ -242,5 +242,23 @@
         // Free any memory associated with the old image
         imagedestroy($old_image);
     } // ends resizeImage function
+
+
+    // Create a function to Display reviews from the database
+    function displayReviews($getReviews) {
+        $id = '<h2 class="reviews">All the reviews</h2>';
+        $id .= '<ul class="review-item">';
+        foreach ($getReviews as $review) {
+            $id .= '<li>';
+            $id .= '<div class="review-wrapper">';
+            $id .= "<p>$review[reviewContent]</p>";
+            $id .= '</div>';
+            $id .= "<div class='post-date'>Post date: $review[reviewPostdate]</div>";
+            $id .= "<div class='dotted-line'></div>";
+            $id .= '</li>';
+        }
+        $id .= '</ul>';
+        return $id;
+    }
 ?>
 

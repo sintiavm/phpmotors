@@ -37,8 +37,8 @@
                 echo $invDisplay; }
             ?>
         </main>
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . './phpmotors/reviews/index.php'; ?>
 
-        <?php require_once $_SERVER['DOCUMENT_ROOT'] . './phpmotors/templates/footer.php'; ?>
     </div>
 </body>
 </html>

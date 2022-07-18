@@ -54,6 +54,22 @@ body {
     margin-top: 20px;
 }
 
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #4c96d7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dotted-line {
+    width: 90%;
+    height: 1px;
+    border-top: 3px dotted darkgray;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /* classification view styiling given by instructor */
 
 /* For vehicle display in classification view */
